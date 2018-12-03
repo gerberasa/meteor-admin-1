@@ -1,0 +1,20 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../scss/style.scss",
+		"../scss/global/_reset.scss",
+		"../scss/global/_global.scss",
+		"../scss/pages/_home.scss",
+		"../scss/pages/_not-found.scss"
+	],
+	"sourcesContent": [
+		"// compileCompressed: ../css/style.css\r\n\r\n// globals\r\n@import 'global/_reset.scss';\r\n@import 'global/_global.scss';\r\n\r\n// components\r\n\r\n// pages\r\n@import 'pages/_home.scss';\r\n@import 'pages/_not-found.scss';\r\n",
+		"// main: ../style.scss\r\n\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed,\r\nfigure, figcaption, footer, header, hgroup,\r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tborder: 0;\r\n\tfont-size: 100%;\r\n\tfont: inherit;\r\n\tvertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure,\r\nfooter, header, hgroup, menu, nav, section {\r\n\tdisplay: block;\r\n}\r\nbody {\r\n\tline-height: 1;\r\n}\r\nol, ul {\r\n\tlist-style: none;\r\n}\r\nblockquote, q {\r\n\tquotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n\tcontent: '';\r\n\tcontent: none;\r\n}\r\ntable {\r\n\tborder-collapse: collapse;\r\n\tborder-spacing: 0;\r\n}\r\n",
+		"// main: ../style.scss\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  background-color: black !important;\r\n  color: white !important;\r\n}\r\na {\r\n  color: white !important;\r\n}\r\n",
+		"// main: ../style.scss\r\n",
+		"// main: ../style.scss\n"
+	],
+	"names": [],
+	"mappings": "uECEA,AAAA,IAAI,CAAE,IAAI,CAAE,GAAG,CAAE,IAAI,CAAE,MAAM,CAAE,MAAM,CAAE,MAAM,CAC7C,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,CAAC,CAAE,UAAU,CAAE,GAAG,CAC1C,CAAC,CAAE,IAAI,CAAE,OAAO,CAAE,OAAO,CAAE,GAAG,CAAE,IAAI,CAAE,IAAI,CAC1C,GAAG,CAAE,GAAG,CAAE,EAAE,CAAE,GAAG,CAAE,GAAG,CAAE,GAAG,CAAE,CAAC,CAAE,CAAC,CAAE,IAAI,CACvC,KAAK,CAAE,MAAM,CAAE,MAAM,CAAE,GAAG,CAAE,GAAG,CAAE,EAAE,CAAE,GAAG,CACxC,CAAC,CAAE,CAAC,CAAE,CAAC,CAAE,MAAM,CACf,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CACtB,QAAQ,CAAE,IAAI,CAAE,KAAK,CAAE,MAAM,CAC7B,KAAK,CAAE,OAAO,CAAE,KAAK,CAAE,KAAK,CAAE,KAAK,CAAE,EAAE,CAAE,EAAE,CAAE,EAAE,CAC/C,OAAO,CAAE,KAAK,CAAE,MAAM,CAAE,OAAO,CAAE,KAAK,CACtC,MAAM,CAAE,UAAU,CAAE,MAAM,CAAE,MAAM,CAAE,MAAM,CAC1C,IAAI,CAAE,GAAG,CAAE,MAAM,CAAE,IAAI,CAAE,OAAO,CAAE,OAAO,CACzC,IAAI,CAAE,IAAI,CAAE,KAAK,CAAE,KAAK,AAAC,CACxB,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,CAAC,CACT,SAAS,CAAE,IAAI,CACf,IAAI,CAAE,OAAO,CACb,cAAc,CAAE,QAAQ,CACxB,wEAED,AAAA,OAAO,CAAE,KAAK,CAAE,OAAO,CAAE,UAAU,CAAE,MAAM,CAC3C,MAAM,CAAE,MAAM,CAAE,MAAM,CAAE,IAAI,CAAE,GAAG,CAAE,OAAO,AAAC,CAC1C,OAAO,CAAE,KAAK,CACd,wEACD,AAAA,IAAI,AAAC,CACJ,WAAW,CAAE,CAAC,CACd,wEACD,AAAA,EAAE,CAAE,EAAE,AAAC,CACN,UAAU,CAAE,IAAI,CAChB,wEACD,AAAA,UAAU,CAAE,CAAC,AAAC,CACb,MAAM,CAAE,IAAI,CACZ,wEACD,AAAA,UAAU,AAAA,OAAO,CAAE,UAAU,AAAA,MAAM,CACnC,CAAC,AAAA,OAAO,CAAE,CAAC,AAAA,MAAM,AAAC,CACjB,OAAO,CAAE,EAAE,CACX,OAAO,CAAE,IAAI,CACb,wEACD,AAAA,KAAK,AAAC,CACL,eAAe,CAAE,QAAQ,CACzB,cAAc,CAAE,CAAC,CACjB,wEC1CD,AAAA,CAAC,CAAE,CAAC,AAAA,OAAO,CAAE,CAAC,AAAA,MAAM,AAAC,CACnB,UAAU,CAAE,UAAU,CACvB,wEACD,AAAA,IAAI,AAAC,CACH,gBAAgB,CAAE,gBAAgB,CAClC,KAAK,CAAE,gBAAgB,CACxB,yEACD,AAAA,CAAC,AAAC,CACA,KAAK,CAAE,gBAAgB,CACxB"
+}

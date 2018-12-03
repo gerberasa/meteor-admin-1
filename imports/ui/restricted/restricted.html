@@ -1,0 +1,75 @@
+<template name="App_restricted">
+  <div id="restricted">
+    {{> login}}
+    {{#if currentUser}}
+      <!-- Simple header with fixed tabs. -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">{{constants.title}}</span>
+          </div>
+          <!-- Tabs -->
+          <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Settings</a>
+            <a href="#fixed-tab-2" class="mdl-layout__tab">Choices</a>
+            <a href="#fixed-tab-3" class="mdl-layout__tab">Answers</a>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer">
+          <span class="mdl-layout-title">{{constants.title}}</span>
+          <nav class="mdl-navigation">
+            <a href="/" class="mdl-navigation__link">View site</a>
+            <a href="#" class="mdl-navigation__link logout">Logout</a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+
+          <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+            <div class="page-content">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                  {{#each _settings}}
+                    {{> data_item}}
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+            <div class="page-content">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                  {{#each choices}}
+                    {{> data_item}}
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+            <div class="page-content">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                  {{#each answers}}
+                    {{> data_item}}
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    {{/if}}
+    <div id="loading" class="{{loading}}">
+      <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
+    </div>
+    <div id="restricted-messages" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+  </div>
+</template>

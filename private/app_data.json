@@ -1,0 +1,57 @@
+{
+  "choices": {
+    "format": [
+      {
+        "key": "command",
+        "desc": "Chat command, eg: <i>!dothis</i>",
+        "input": "text"
+      },
+      {
+        "key": "question",
+        "desc": "Test based question",
+        "input": "textarea"
+      },
+      {
+        "key": "permitted",
+        "desc": "Comma seperated list of Twitch usernames",
+        "input": "text"
+      }
+    ],
+    "data": [
+      {
+        "command": "!command1",
+        "question": "Will you use command1?",
+        "permitted": "username1"
+      },
+      {
+        "command": "!command2",
+        "question": "Will you use command2?",
+        "permitted": ""
+      }
+    ]
+  },
+  "answers": {
+    "format": [
+      {
+        "key": "command",
+        "desc": "Command used",
+        "input": "text-display"
+      },
+      {
+        "key": "username",
+        "desc": "Twitch user who used the command",
+        "input": "text"
+      },
+      {
+        "key": "createdAt",
+        "input": "date-display"
+      }
+    ],
+    "data": [
+      {
+        "command": "!command1",
+        "username": "username1,username2"
+      }
+    ]
+  }
+}

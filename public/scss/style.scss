@@ -1,0 +1,11 @@
+// compileCompressed: ../css/style.css
+
+// globals
+@import 'global/_reset.scss';
+@import 'global/_global.scss';
+
+// components
+
+// pages
+@import 'pages/_home.scss';
+@import 'pages/_not-found.scss';

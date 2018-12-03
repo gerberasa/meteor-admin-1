@@ -1,0 +1,71 @@
+<template name="data_item">
+  <form class="data_item collapsable {{#if expanded}}expanded{{/if}}">
+    <div class="restricted-table-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{title}}</h2>
+      </div>
+      <div class="collapse">
+        <div class="mdl-card__supporting-text">
+          <table class="mdl-data-table">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Key</th>
+                <th class="mdl-data-table__cell--non-numeric">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each data}}
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">
+                    {{key}}
+                    {{#if desc}}
+                      <span class="desc">{{{desc}}}</span>
+                    {{/if}}
+                  </td>
+                  <td class="mdl-data-table__cell--non-numeric">
+                    {{#if equals input 'text'}}
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" name="{{key}}" type="text" value="{{value}}">
+                      </div>
+                    {{/if}}
+                    {{#if equals input 'textarea'}}
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <textarea class="mdl-textfield__input" type="text" rows= "2" name="{{key}}">{{value}}</textarea>
+                      </div>
+                    {{/if}}
+                    {{#if equals input 'text-display'}}
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" value="{{value}}" disabled>
+                      </div>
+                    {{/if}}
+                    {{#if equals input 'date-display'}}
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" value="{{value}}" disabled>
+                      </div>
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
+          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Update <i class="material-icons">save</i>
+          </button>
+        </div>
+      </div>
+      <div class="mdl-card__actions mdl-card--border mdl-typography--text-center">
+        {{#if expanded}}
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_less">
+            Close <i class="material-icons">expand_less</i>
+          </button>
+        {{else}}
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_more">
+          Edit <i class="material-icons">expand_more</i>
+        </button>
+        {{/if}}
+      </div>
+    </div>
+  </form>
+</template>

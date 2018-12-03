@@ -1,0 +1,36 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "password"
+  },
+  "_settings": [
+    {
+      "title": "Settings Example 1",
+      "data": [
+        {
+          "key": "example_1_a",
+          "value": "example",
+          "desc": "Description of this field",
+          "input": "text"
+        },
+        {
+          "key": "example_1_b",
+          "value": "example",
+          "desc": "Description of this field",
+          "input": "textarea"
+        }
+      ]
+    },
+    {
+      "title": "Settings Example 1",
+      "data": [
+        {
+          "key": "example_2_a",
+          "value": "example",
+          "desc": "Description of this field",
+          "input": "text"
+        }
+      ]
+    }
+  ]
+}

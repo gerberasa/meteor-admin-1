@@ -1,0 +1,202 @@
+// compileCompressed: ../css/restricted.css
+
+// Material
+@import '../material/icons.css';
+@import '../material/material.min.css';
+
+// Material selection
+$primary: #673ab7;
+$accent: #448aff;
+
+// general template layout
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.page-content {
+  padding: 25px 25px 30px 25px;
+  max-width: 1200px;
+  margin: auto;
+  // mobile
+  @media (max-width:720px)  {
+    padding: 15px 10px 30px 10px;
+  }
+}
+
+// login card
+form {
+  &.login {
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -160px;
+    z-index: 999;
+    .mdl-card {
+      min-height: 0;
+      width: 100%;
+      margin-bottom: 30px;
+      .mdl-card__supporting-text {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// table cards
+.mdl-card {
+  &.restricted-table-card {
+    min-height: 0;
+    width: 100%;
+    margin-bottom: 30px;
+    .mdl-card__title {
+      background-color: #f1f1f1;
+    }
+    .mdl-card__supporting-text {
+      width: 100%;
+      padding: 0;
+      .mdl-data-table {
+        width: 100%;
+        border: none;
+        .mdl-textfield {
+          width: 100%;
+          .mdl-textfield__input {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            background-color: #f7f7f7;
+            padding: 8px;
+            border-radius: 3px;
+            color: #000;
+            &:disabled {
+              color: #888;
+              border: 0px;
+            }
+          }
+        }
+        td {
+          border-bottom: none;
+          color: #000;
+          font-size: 16px;
+          .desc {
+            display: block;
+            font-size: 13px;
+            opacity: 0.5;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+
+    // mobile
+    @media (max-width:720px)  {
+      .mdl-data-table {
+        thead, th {
+          display: none;
+        }
+        tr {
+          td {
+            border: none;
+            display: block;
+            width: 100%;
+            height: auto;
+            &:first-child {
+              border-top: 1px solid rgba(0, 0, 0, 0.12);
+              padding-top: 25px;
+            }
+            &:last-child {
+              padding-bottom: 25px;
+            }
+          }
+        }
+        .mdl-textfield {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+// text button icons
+.mdl-button {
+  .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+  }
+}
+
+// collapsable forms
+.collapsable {
+  .collapse {
+    height: 0px;
+    overflow: hidden;
+  }
+  &.expanded {
+    .collapse {
+      height: auto;
+    }
+  }
+}
+
+// toast types
+#restricted-messages {
+  .mdl-snackbar__text {
+    &:before {
+      font-family: 'Material Icons';
+      content: '';
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 20px;
+      line-height: 20px;
+      vertical-align: middle;
+    }
+  }
+  &.success {
+    .mdl-snackbar__text {
+      &:before {
+        content: 'check';
+        color: $accent;
+      }
+    }
+  }
+  &.alert {
+    .mdl-snackbar__text {
+      &:before {
+        content: 'priority_high';
+        color: $primary;
+      }
+    }
+  }
+  &.error {
+    .mdl-snackbar__text {
+      &:before {
+        content: 'close';
+        color: #fd276a;
+      }
+    }
+  }
+}
+
+// loading
+#loading {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(224, 224, 224, 0.75);
+  transition: opacity .5s ease;
+  opacity: 0;
+  pointer-events: none;
+  .mdl-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -14px;
+    margin-top: -14px;
+  }
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
