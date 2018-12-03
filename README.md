@@ -57,7 +57,9 @@ meteor add accounts-password
 
 ##### Icons:
 [material.io/tools/icons](https://material.io/tools/icons/?style=baseline)
+
 Use inline icons with `<i class="material-icons">save</i>`
+
 Use CSS icons with
 ```
 :before {
