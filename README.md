@@ -1,5 +1,5 @@
 # 💎 hiven meteor boilerplate
-*Using [Meteor](https://www.meteor.com/), [MongoDB](https://www.mongodb.com/) and custom [Material](https://getmdl.io/) Admin*
+*Using [Meteor](https://www.meteor.com/), [MongoDB](https://www.mongodb.com/) & [Material](https://getmdl.io/) Admin*
 
 #### Install
 * create new app `meteor create APPNAME --full`
