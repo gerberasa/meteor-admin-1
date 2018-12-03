@@ -29,7 +29,7 @@
 
 -------------------
 
-## Notes
+### Notes
 
 ##### Security and folder structure
 [meteor.com/structure](https://guide.meteor.com/structure.html)
@@ -41,7 +41,7 @@
 
 -------------------
 
-## Fixes
+### Fixes
 
 ##### Fix for BCRYPT errors
 ```
@@ -53,7 +53,7 @@ meteor add accounts-password
 
 -------------------
 
-## Material
+### Material
 
 ##### Icons
 [material.io/tools/icons](https://material.io/tools/icons/?style=baseline)
