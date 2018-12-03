@@ -31,7 +31,7 @@
 
 ### Notes
 
-##### Security and folder structure
+##### Security and folder structure:
 [meteor.com/structure](https://guide.meteor.com/structure.html)
 
 * All files in `/imports` will not be loaded by default
@@ -43,7 +43,7 @@
 
 ### Fixes
 
-##### Fix for BCRYPT errors
+##### Fix for BCRYPT errors:
 ```
 meteor remove accounts-password
 meteor npm uninstall --save bcrypt
@@ -55,7 +55,7 @@ meteor add accounts-password
 
 ### Material
 
-##### Icons
+##### Icons:
 [material.io/tools/icons](https://material.io/tools/icons/?style=baseline)
 Use inline icons with `<i class="material-icons">save</i>`
 Use CSS icons with
@@ -68,7 +68,7 @@ Use CSS icons with
 }
 ```
 
-##### Useful colour classes
+##### Useful colour classes:
 ```
 .mdl-color-text--white
 .mdl-color--primary
@@ -83,7 +83,7 @@ Use CSS icons with
 .mdl-color-text--accent-contrast
 ```
 
-##### Useful typography classes
+##### Useful typography classes:
 ```
 .mdl-typography--text-left
 .mdl-typography--text-right
