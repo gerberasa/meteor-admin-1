@@ -45,7 +45,7 @@
 
 ### ⚠️ Fixes
 
-##### Fix for BCRYPT errors:
+##### Fix for BCRYPT errors (1.7):
 ```
 meteor remove accounts-password
 meteor npm uninstall --save bcrypt
