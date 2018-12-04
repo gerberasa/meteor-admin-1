@@ -28,7 +28,7 @@
 * default data can also be added here and will be entered through functions at `/imports/startup/server/fixtures.js`
 * to edit data within the admin, import, subscribe and include it into the restricted templates at `/imports/ui/restricted/`
 
-#### 🔹 Development
+#### 🔹 Development Tools
 * Press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
 
 -------------------
