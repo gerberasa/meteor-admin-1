@@ -2,6 +2,7 @@
 *Using [Meteor](https://www.meteor.com/), [MongoDB](https://www.mongodb.com/), [Blaze](http://blazejs.org) & [Material](https://getmdl.io/) Admin*
 
 #### Install
+* [install the latest version of Meteor](https://www.meteor.com/install) (tested on 1.8)
 * create new app `meteor create APPNAME --full`
 * copy across files and folders from this repo
 * install dependencies `meteor npm install`
