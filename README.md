@@ -1,7 +1,7 @@
 # 💎 hiven meteor boilerplate
 *Using [Meteor](https://www.meteor.com/), [MongoDB](https://www.mongodb.com/), [Blaze](http://blazejs.org) & [Material](https://getmdl.io/) Admin*
 
-#### Install
+#### 🔹 Install
 * [install the latest version of Meteor](https://www.meteor.com/install) (tested on 1.7)
 * create new app `meteor create APPNAME --full`
 * copy across files and folders from this repo
@@ -10,19 +10,19 @@
 * cd into the app root and run `meteor` to deploy local dev environment at [localhost:3000](http://localhost:3000/)
 * to build for production and more, visit [meteor.com/commandline](https://docs.meteor.com/commandline.html)
 
-#### Settings
+#### 🔹 Settings
 * change default app settings in `/private/app_settings.json` (server only data that can be updated)
 * change credentials here for admin login at [localhost:3000/restricted](http://localhost:3000/restricted)
 
-#### SCSS & JS Libs
+#### 🔹 SCSS & JS Libs
 * stylesheets must be compiled outside of meteor and placed in `/public/scss` and compiled to `public/css`
 * stylesheets and JS libraries are conditionally loaded via `/imports/startup/client/meta.js`
 
-#### Pages and Routes
+#### 🔹 Pages and Routes
 * create new page templates in `/imports/ui/pages/`
 * new URL routes need to go `/imports/startup/client/routes.js`
 
-#### API & Collections
+#### 🔹 API & Collections
 * collections have their own folder and files in `/imports/api/`
 * an example of the format each collections has `/private/app_data.json`
 * default data can also be added here and will be entered through functions at `/imports/startup/server/fixtures.js`
