@@ -14,9 +14,9 @@
 * change default app settings in `/private/app_settings.json` (server only data that can be updated)
 * change credentials here for admin login at [localhost:3000/restricted](http://localhost:3000/restricted)
 
-#### 🔹 SCSS & JS Libs
+#### 🔹 SCSS, JS Libs and Google Fonts
 * stylesheets must be compiled outside of meteor and placed in `/public/scss` and compiled to `public/css`
-* stylesheets and JS libraries are conditionally loaded via `/imports/startup/client/meta.js`
+* stylesheets, JS libraries and Google Fonts are conditionally loaded via `/imports/startup/client/meta.js`
 
 #### 🔹 Pages and Routes
 * create new page templates in `/imports/ui/pages/`
@@ -27,6 +27,9 @@
 * an example of the format each collections has `/private/app_data.json`
 * default data can also be added here and will be entered through functions at `/imports/startup/server/fixtures.js`
 * to edit data within the admin, import, subscribe and include it into the restricted templates at `/imports/ui/restricted/`
+
+#### 🔹 Development
+* Press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
 
 -------------------
 
