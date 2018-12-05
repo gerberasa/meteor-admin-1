@@ -1,0 +1,24 @@
+// compileCompressed: ../css/app.css
+
+// All the below styles are loaded globally
+// - on both public facing and restricted admin area
+// - and so should only be used for loading between app data
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  background-color: #444 !important;
+  #app {
+    display: block;
+    opacity: 0;
+    min-height: 100vh;
+  }
+  &.page-loaded {
+    #app {
+      animation: fadeIn .5s forwards;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<template name="account_settings">
+  <form class="data_item change_password">
+    <div class="restricted-table-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h3 class="mdl-card__title-text">Change Password</h3>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <table class="mdl-data-table">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">
+                Old Password
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" name="old_password" type="password" value="">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">
+                New Password<span class="desc">Tip: Minimum of 6 characters, including 1 lowercase, 1 uppercase and 1 special character</span>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" name="new_password" type="password" value="">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          Update <i class="material-icons">save</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</template>

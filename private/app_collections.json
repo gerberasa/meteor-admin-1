@@ -1,0 +1,117 @@
+{
+  "choices": {
+    "options": {
+      "name": "Choices",
+      "desc": "Twitch bot commands and questions, available for chat.",
+      "icon": "message",
+      "title_key": "command",
+      "actions": {
+        "update": true,
+        "insert": true,
+        "remove": true
+      }
+    },
+    "format": [
+      {
+        "key": "command",
+        "desc": "Chat command, eg: <i>!dothis</i>",
+        "input": {
+          "type": "text",
+          "disabled": true
+        }
+      },
+      {
+        "key": "question",
+        "desc": "Test based question",
+        "input": {
+          "type": "textarea"
+        }
+      },
+      {
+        "key": "permitted",
+        "desc": "Comma seperated list of Twitch usernames",
+        "input": {
+          "type": "text",
+          "notRequired": true
+        }
+      }
+    ],
+    "data": [
+      {
+        "command": "!example0",
+        "question": "Example 0 question?",
+        "permitted": "twitchusername0"
+      },
+      {
+        "command": "!example1",
+        "question": "Example 1 question?",
+        "permitted": ""
+      },
+      {
+        "command": "!example2",
+        "question": "Example 2 question?",
+        "permitted": ""
+      },
+      {
+        "command": "!example3",
+        "question": "Example 3 question?",
+        "permitted": ""
+      }
+    ]
+  },
+  "answers": {
+    "options": {
+      "name": "Answers",
+      "desc": "Commands that have been entered by users.",
+      "icon": "forum",
+      "title_key": "username",
+      "actions": {
+        "update": true,
+        "insert": true,
+        "remove": false
+      }
+    },
+    "format": [
+      {
+        "key": "command",
+        "desc": "Command used",
+        "input": {
+          "type": "text",
+          "disabled": true
+        }
+      },
+      {
+        "key": "username",
+        "desc": "Twitch user who used the command",
+        "input": {
+          "type": "text"
+        }
+      },
+      {
+        "key": "updated",
+        "input": {
+          "type": "text",
+          "onlydisplay": true
+        }
+      }
+    ],
+    "data": [
+      {
+        "command": "!truth",
+        "username": "twitchusername0"
+      },
+      {
+        "command": "!example1",
+        "username": "twitchusername1"
+      },
+      {
+        "command": "!example1",
+        "username": "twitchusername2"
+      },
+      {
+        "command": "!example2",
+        "username": "twitchusername3"
+      }
+    ]
+  }
+}
