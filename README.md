@@ -42,7 +42,20 @@
 * All files in any `client/` folder will be available in the browser
 * All files in any `server/` folder will only be used on the server
 * All files in `/public/` are available as-is, and served up without "public", for example ""
-* All files in `/private/` are only accessible from server code and can be loaded via the [Assets API](http://docs.meteor.com/#/full/assets_getText).
+* All files in `/private/` are only accessible from server code and can be loaded via the [Assets API](http://docs.meteor.com/#/full/assets_getText)
+
+##### Admin data field types:
+
+All data set via `/private/app_settings.json` and `/private/app_data.json` have various ways of being edited (or not)
+The value of `input` can be one of the following:
+
+* `none` - the value will not be shown in the admin
+* `text` - a text field
+* `text-disabled` - a text field that will be submitted, but is disabled
+* `textarea` - a textarea field
+* more soon!
+
+Remember that only field values submitted via the client method in `api/COLLECTION/server/methods.js` will be submitted
 
 -------------------
 
