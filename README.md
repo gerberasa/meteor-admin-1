@@ -42,9 +42,9 @@
 [meteor.com/structure](https://guide.meteor.com/structure.html)
 
 * All files in `/imports/` will not be loaded automatically by Meteor (import files as/when you need them)
-* All files in any `client/` folder will be available in the browser
-* All files in any `server/` folder will only be used on the server
-* All files in `/public/` are available as-is, and served up without "public", for example ""
+* All files in any `client/` folder will be available in the client/browser (unsecure)
+* All files in any `server/` folder will only be available to the server (secure)
+* All files in `/public/` are available as-is, and served up in the root without "/public/" in the URL
 * All files in `/private/` are only accessible from server code and can be loaded via the [Assets API](http://docs.meteor.com/#/full/assets_getText)
 
 ##### Admin data field types:
