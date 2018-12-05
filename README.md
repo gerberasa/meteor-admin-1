@@ -135,3 +135,7 @@ Use CSS icons with
 .mdl-typography--font-bold
 .mdl-typography--font-black
 ```
+
+### 🤓 Emoji Favicons
+
+Grab them from [favicon.io/emoji-favicons/](https://favicon.io/emoji-favicons/)
