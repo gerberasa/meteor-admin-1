@@ -3,15 +3,19 @@ import { Meteor } from 'meteor/meteor';
 // global server methods
 Meteor.methods({
 
-  // return just the format for collections
-  'data_format'() {
-    let data_format = {};
-    const app_data = JSON.parse(Assets.getText('app_data.json'));
-    // _mapObject not available
-    _.each(app_data, function(collection, key){
-      data_format[key] = collection.format;
+  // return just the details for each collections
+  'collection_details'() {
+    const app_collections = JSON.parse(Assets.getText('app_collections.json'));
+    const collection_details = {
+      formats: {},
+      options: {}
+    };
+    // _.mapObject not available
+    _.each(app_collections, function(collection, key){
+      collection_details.formats[key] = collection.format;
+      collection_details.options[key] = collection.options;
     });
-    return data_format;
+    return collection_details;
   }
 
 });

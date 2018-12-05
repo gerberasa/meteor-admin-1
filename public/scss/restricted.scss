@@ -1,5 +1,7 @@
 // compileCompressed: ../css/restricted.css
 
+// styles for the restricted admin
+
 // Material
 @import '../material/icons.css';
 @import '../material/material.min.css';
@@ -22,6 +24,11 @@ $accent: #448aff;
   }
 }
 
+// layout animations
+.mdl-layout, .mdl-layout section {
+  animation: fadeIn .5s forwards;
+}
+
 // login card
 form {
   &.login {
@@ -42,6 +49,60 @@ form {
       }
     }
   }
+  > p {
+    color: #fff;
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+// prevent material icons triggering events
+button, a {
+  .material-icons {
+    pointer-events: none;
+  }
+}
+
+// navigation
+.mdl-layout__tab {
+  padding: 0 20px;
+  .material-icons {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+.mdl-navigation__link {
+  .material-icons {
+    margin-right: 5px;
+  }
+}
+.mdl-layout__drawer {
+  .mdl-layout-title {
+    font-size: 65px;
+    text-align: center;
+    line-height: 65px;
+    padding: 30px 0 0 0;
+  }
+}
+
+// dark background - fix text and border radius {
+.mdl-card {
+  border-radius: 5px;
+  background-color: transparent;
+  .mdl-card__supporting-text, .mdl-card__actions {
+    background-color: #fff;
+  }
+}
+.page-content {
+  color: #fff;
+}
+.gradient {
+  background: linear-gradient(to right, $primary 0%, $accent 100%);
+}
+.mdl-layout__tab-bar, .mdl-layout__tab-bar-button {
+  background-color: transparent;
 }
 
 // table cards
@@ -52,6 +113,17 @@ form {
     margin-bottom: 30px;
     .mdl-card__title {
       background-color: #f1f1f1;
+      justify-content: space-between;
+      h3 {
+        margin-right: 15px;
+        line-height: 36px;
+      }
+    }
+    &.restricted-insert-card {
+      .mdl-card__title {
+        background-color: #545454;
+        color: #fff;
+      }
     }
     .mdl-card__supporting-text {
       width: 100%;
@@ -83,33 +155,42 @@ form {
             opacity: 0.5;
             margin-top: 5px;
           }
+          &:first-child {
+            width: 33%;
+            white-space: normal;
+          }
+        }
+        // mobile
+        @media (max-width:720px)  {
+          thead, th {
+            display: none;
+          }
+          tr {
+            td {
+              border: none;
+              display: block;
+              width: 100%;
+              height: auto;
+              &:first-child {
+                border-top: 1px solid rgba(0, 0, 0, 0.12);
+                padding-top: 25px;
+                width: 100%;
+              }
+              &:last-child {
+                padding-bottom: 25px;
+              }
+            }
+          }
+          .mdl-textfield {
+            padding: 0;
+          }
         }
       }
     }
-
-    // mobile
-    @media (max-width:720px)  {
-      .mdl-data-table {
-        thead, th {
-          display: none;
-        }
-        tr {
-          td {
-            border: none;
-            display: block;
-            width: 100%;
-            height: auto;
-            &:first-child {
-              border-top: 1px solid rgba(0, 0, 0, 0.12);
-              padding-top: 25px;
-            }
-            &:last-child {
-              padding-bottom: 25px;
-            }
-          }
-        }
-        .mdl-textfield {
-          padding: 0;
+    .mdl-card__actions {
+      button {
+        &.data_remove {
+          float: left;
         }
       }
     }
@@ -127,12 +208,14 @@ form {
 // collapsable forms
 .collapsable {
   .collapse {
-    height: 0px;
+    max-height: 0px;
     overflow: hidden;
+    transition: none;
   }
   &.expanded {
     .collapse {
-      height: auto;
+      max-height: 1000px;
+      transition: max-height .3s ease-in;
     }
   }
 }
@@ -177,15 +260,26 @@ form {
 }
 
 // loading
-#loading {
+#admin-loading {
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: none;
+  animation: fadeIn .5s forwards;
+  &.active {
+    display: block;
+  }
+}
+#form-loading {
   position: fixed;
   z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(224, 224, 224, 0.75);
-  transition: opacity .5s ease;
+  background-color: rgba(68, 68, 68, 0.75);
   opacity: 0;
   pointer-events: none;
   .mdl-spinner {
@@ -196,7 +290,7 @@ form {
     margin-top: -14px;
   }
   &.active {
-    opacity: 1;
     pointer-events: all;
+    animation: fadeIn .5s forwards;
   }
 }

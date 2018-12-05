@@ -2,3 +2,4 @@
 
 import './routes.js';
 import './helpers.js';
+import './loading.js';

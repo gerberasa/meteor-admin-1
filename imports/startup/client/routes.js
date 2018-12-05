@@ -12,7 +12,9 @@ import { Meta } from './meta.js';
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
+    Session.set('pageLoaded', false);
     import('../../ui/pages/home/home.js').then(() => {
+      Session.set('pageLoaded', true);
       BlazeLayout.render('App_body', { main: 'App_home' });
     });
   },
@@ -25,7 +27,9 @@ FlowRouter.route('/', {
 // 404
 FlowRouter.notFound = {
   action() {
+    Session.set('pageLoaded', false);
     import('../../ui/pages/not-found/not-found.js').then(() => {
+      Session.set('pageLoaded', true);
       BlazeLayout.render('App_body', { main: 'App_notFound' });
     });
   },
@@ -37,6 +41,7 @@ FlowRouter.notFound = {
 FlowRouter.route('/restricted', {
   name: 'App.restricted',
   action() {
+    Session.set('pageLoaded', false);
     import('../../ui/restricted/restricted.js').then(() => {
       BlazeLayout.render('App_body', { main: 'App_restricted' });
     });

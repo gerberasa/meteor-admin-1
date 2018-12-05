@@ -3,73 +3,124 @@
     {{> login}}
     {{#if currentUser}}
       <!-- Simple header with fixed tabs. -->
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-        <header class="mdl-layout__header">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header gradient">
           <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">{{constants.title}}</span>
+            <span class="mdl-layout-title">{{constants.emoji}} {{constants.title}}</span>
           </div>
           <!-- Tabs -->
-          <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Settings</a>
-            <a href="#fixed-tab-2" class="mdl-layout__tab">Choices</a>
-            <a href="#fixed-tab-3" class="mdl-layout__tab">Answers</a>
+          <div class="mdl-layout__tab-bar">
+            <a href="#fixed-tab-dashboard" class="mdl-layout__tab is-active">
+              <i class="material-icons">dashboard</i> Dashboard
+            </a>
+            {{#each collections}}
+              <a href="#fixed-tab-{{@index}}" class="mdl-layout__tab">
+                <i class="material-icons">{{options.icon}}</i> {{options.name}}
+              </a>
+            {{/each}}
           </div>
         </header>
         <div class="mdl-layout__drawer">
-          <span class="mdl-layout-title">{{constants.title}}</span>
+          <span class="mdl-layout-title">{{constants.emoji}}</span>
           <nav class="mdl-navigation">
-            <a href="/" class="mdl-navigation__link">View site</a>
-            <a href="#" class="mdl-navigation__link logout">Logout</a>
+            <a href="/" class="mdl-navigation__link">
+              <i class="material-icons">home</i> View site
+            </a>
+            <a href="#" class="mdl-navigation__link change-display settings">
+              <i class="material-icons">build</i> Settings
+            </a>
+            <a href="#" class="mdl-navigation__link change-display account-settings">
+              <i class="material-icons">account_circle</i> Account Settings
+            </a>
+            <a href="#" class="mdl-navigation__link logout">
+              <i class="material-icons">exit_to_app</i> Logout
+            </a>
           </nav>
         </div>
         <main class="mdl-layout__content">
 
-          <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-            <div class="page-content">
-              <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                  {{#each _settings}}
-                    {{> data_item}}
-                  {{/each}}
+          <div style="{{#unless equals display 'tabs'}}display:none;{{/unless}}">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-dashboard">
+              <div class="page-content">
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <h3 class="mdl-typography--font-thin"><i class="material-icons">dashboard</i> Dashboard</h3>
+                  </div>
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <p>Welcome to your dashboard.</p>
+                    <p>This is where the magic happens.</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+            {{#each collections}}
+              <section class="mdl-layout__tab-panel" id="fixed-tab-{{@index}}">
+                <div class="page-content">
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <h3 class="mdl-typography--font-thin"><i class="material-icons">{{options.icon}}</i> {{options.name}}</h3>
+                      <p>{{options.desc}}</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                      {{#if options.actions.insert}}
+                        {{> data_item dataItem=insertFormat collapse="true"}}
+                      {{/if}}
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                      {{#each data_items}}
+                        {{> data_item dataItem=this collapse="true"}}
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            {{/each}}
+          </div>
 
-          <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-            <div class="page-content">
-              <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                  {{#each choices}}
-                    {{> data_item}}
-                  {{/each}}
-                </div>
-              </div>
-            </div>
-          </section>
 
-          <section class="mdl-layout__tab-panel" id="fixed-tab-3">
-            <div class="page-content">
-              <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                  {{#each answers}}
-                    {{> data_item}}
-                  {{/each}}
+          <div style="{{#unless equals display 'settings'}}display:none;{{/unless}}">
+            <section class="settings">
+              <div class="page-content">
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <h3 class="mdl-typography--font-thin"><i class="material-icons">build</i> Settings</h3>
+                  </div>
+                  <div class="mdl-cell mdl-cell--12-col">
+                    {{#each _settings}}
+                      {{> data_item dataItem=this}}
+                    {{/each}}
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
+
+          <div style="{{#unless equals display 'account-settings'}}display:none;{{/unless}}">
+            <section class="settings">
+              <div class="page-content">
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <h3 class="mdl-typography--font-thin"><i class="material-icons">account_circle</i> Account Settings</h3>
+                  </div>
+                  <div class="mdl-cell mdl-cell--12-col">
+                    {{> account_settings}}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
 
         </main>
       </div>
     {{/if}}
-    <div id="loading" class="{{loading}}">
+    <div id="form-loading" class="{{formLoading}}">
       <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
     </div>
     <div id="restricted-messages" class="mdl-js-snackbar mdl-snackbar">
       <div class="mdl-snackbar__text"></div>
       <button class="mdl-snackbar__action" type="button"></button>
     </div>
+    <div id="admin-loading" class="{{appLoading}} mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
   </div>
 </template>

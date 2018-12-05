@@ -3,10 +3,21 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-body {
-  background-color: black !important;
-  color: white !important;
-}
-a {
-  color: white !important;
+#app {
+  background-color: #ccc;
+  color: #333;
+  text-align: center;
+  padding-top: calc(50vh - 50px);
+  font-family: 'Raleway', sans-serif;
+  h1 {
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+  }
+  p {
+    a {
+      color: #00a0df;
+      text-decoration: none;
+    }
+  }
 }

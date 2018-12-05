@@ -1,8 +1,11 @@
 <template name="data_item">
   <form class="data_item collapsable {{#if expanded}}expanded{{/if}}">
-    <div class="restricted-table-card mdl-card mdl-shadow--2dp">
+    <div class="restricted-table-card mdl-card mdl-shadow--2dp {{#if dataItem.actions.insert}}restricted-insert-card{{/if}}">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">{{title}}</h2>
+        <h3 class="mdl-card__title-text">{{dataItem.title}}</h3>
+        {{#unless expanded}}
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_more"><i class="material-icons">edit</i></button>
+        {{/unless}}
       </div>
       <div class="collapse">
         <div class="mdl-card__supporting-text">
@@ -14,56 +17,55 @@
               </tr>
             </thead>
             <tbody>
-              {{#each data}}
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">
-                    {{key}}
-                    {{#if desc}}
-                      <span class="desc">{{{desc}}}</span>
-                    {{/if}}
-                  </td>
-                  <td class="mdl-data-table__cell--non-numeric">
-                    {{#if equals input 'text'}}
-                      <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" name="{{key}}" type="text" value="{{value}}">
-                      </div>
-                    {{/if}}
-                    {{#if equals input 'textarea'}}
-                      <div class="mdl-textfield mdl-js-textfield">
-                        <textarea class="mdl-textfield__input" type="text" rows= "2" name="{{key}}">{{value}}</textarea>
-                      </div>
-                    {{/if}}
-                    {{#if equals input 'text-display'}}
-                      <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" value="{{value}}" disabled>
-                      </div>
-                    {{/if}}
-                    {{#if equals input 'date-display'}}
-                      <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" value="{{value}}" disabled>
-                      </div>
-                    {{/if}}
-                  </td>
-                </tr>
+              {{#each field in dataItem.data}}
+                {{#unless and dataItem.actions.insert field.input.onlydisplay}}
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      {{field.key}}
+                      {{#if field.desc}}
+                        <span class="desc">{{{field.desc}}}</span>
+                      {{/if}}
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      {{#if equals field.input.type 'text'}}
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" name="{{field.key}}" type="text" value="{{field.value}}" disabled="{{inputDisabled(field)}}">
+                        </div>
+                      {{/if}}
+                      {{#if equals field.input.type 'textarea'}}
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <textarea class="mdl-textfield__input" name="{{field.key}}" rows= "2" disabled="{{inputDisabled(field)}}">{{field.value}}</textarea>
+                        </div>
+                      {{/if}}
+                    </td>
+                  </tr>
+                {{/unless}}
               {{/each}}
             </tbody>
           </table>
         </div>
         <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-            Update <i class="material-icons">save</i>
-          </button>
+          {{#if dataItem.actions.remove}}
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect data_remove">
+            Remove <i class="material-icons">delete</i>
+            </button>
+          {{/if}}
+          {{#if or dataItem.actions.update dataItem.actions.insert}}
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              {{#if dataItem.actions.insert}}
+                Insert <i class="material-icons">add</i>
+              {{else}}
+                Update <i class="material-icons">save</i>
+              {{/if}}
+            </button>
+          {{/if}}
         </div>
-      </div>
-      <div class="mdl-card__actions mdl-card--border mdl-typography--text-center">
-        {{#if expanded}}
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_less">
-            Close <i class="material-icons">expand_less</i>
-          </button>
-        {{else}}
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_more">
-          Edit <i class="material-icons">expand_more</i>
-        </button>
+        {{#if collapse}}
+          <div class="mdl-card__actions mdl-card--border mdl-typography--text-center">
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect expand_less">
+              Close <i class="material-icons">expand_less</i>
+            </button>
+          </div>
         {{/if}}
       </div>
     </div>

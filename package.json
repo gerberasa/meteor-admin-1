@@ -1,5 +1,5 @@
 {
-  "name": "chaos",
+  "name": "hiven_meteor",
   "private": true,
   "scripts": {
     "start": "meteor run",

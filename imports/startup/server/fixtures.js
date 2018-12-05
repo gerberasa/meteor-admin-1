@@ -13,8 +13,12 @@ Meteor.startup(() => {
 
   // admin / restricted user
   if (Meteor.users.find().count() === 0) {
-    Accounts.createUser(app_settings.admin);
-    console.log('No user set - Admin has been created');
+    const adminID = Accounts.createUser(app_settings.admin);
+    Meteor.users.update(adminID, {
+      $set: { admin: true }
+    });
+    console.log('No user set - Admin has been created with default credentials');
+    console.log('*PLEASE LOGIN AND CHANGE PASSWORD IMMEDIATELY*');
   }
 
   // Add a Setting if it doesn't exist
@@ -32,14 +36,14 @@ Meteor.startup(() => {
     });
   });
 
-  // data
-  const app_data = JSON.parse(Assets.getText('app_data.json'));
+  // collections default data
+  const app_collections = JSON.parse(Assets.getText('app_collections.json'));
 
   // Choices
   // default data if collection is empty
   if (Choices.find().count() === 0) {
-    console.log('Choices - adding default data x '+app_data.choices.data.length);
-    app_data.choices.data.forEach(item => {
+    console.log('Choices - adding default data x '+app_collections.choices.data.length);
+    app_collections.choices.data.forEach(item => {
       Choices_upsert(item);
     });
   }
@@ -47,8 +51,8 @@ Meteor.startup(() => {
   // Answers
   // default data if collection is empty
   if (Answers.find().count() === 0) {
-    console.log('Answers - adding default data x '+app_data.answers.data.length);
-    app_data.answers.data.forEach(item => {
+    console.log('Answers - adding default data x '+app_collections.answers.data.length);
+    app_collections.answers.data.forEach(item => {
       Answers_upsert(item);
     });
   }

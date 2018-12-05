@@ -13,8 +13,13 @@ Choices.deny({
 
 // server update
 Choices_upsert = function(item){
+  // if empty fields
+  if(item.command === '' || item.question === ''){
+    throw new Meteor.Error('missing-fields', 'Missing fields');
+  }
+
   return Choices.upsert({
-    'command': item.command
+    '_id': item._id
   }, {
     'command': item.command,
     'question': item.question,
@@ -24,16 +29,44 @@ Choices_upsert = function(item){
 
 // client methods
 Meteor.methods({
-  'choices.client_upsert'(item) {
+  'choices.client_update'(item) {
+    check(item, Object);
+    check(item._id, String);
+    check(item.command, String);
+    check(item.question, String);
+    check(item.permitted, String);
+
+    // must be admin
+    if(!Meteor.call('_users.is_admin')){
+      throw new Meteor.Error('unauthorized-upsert-choice', 'Unauthorized to update choice');
+    }
+    Choices_upsert(item);
+    return true;
+  },
+  'choices.client_insert'(item) {
     check(item, Object);
     check(item.command, String);
     check(item.question, String);
     check(item.permitted, String);
 
-    // must be logged in to edit
-    if(!this.userId) {
-      throw new Meteor.Error('Choices: update unauthorized');
+    // must be admin
+    if(!Meteor.call('_users.is_admin')){
+      throw new Meteor.Error('unauthorized-update-choice', 'Unauthorized to update choice');
     }
-    return Choices_upsert(item);
+    Choices_upsert(item);
+    return true;
+  },
+  'choices.client_remove'(_id) {
+    check(_id, String);
+
+    // must be admin
+    if(!Meteor.call('_users.is_admin')){
+      throw new Meteor.Error('unauthorized-remove-choice', 'Unauthorized to remove choice');
+    }
+    // remove
+    Choices.remove({
+      '_id': _id
+    });
+    return true;
   },
 });

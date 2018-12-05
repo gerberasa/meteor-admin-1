@@ -13,28 +13,19 @@ Template.login.helpers({
 Template.login.events({
   'submit .login'(event) {
     event.preventDefault();
-    Session.set('loading', true);
-
+    Session.set('restrictedAppLoading', true);
     const target = event.target;
     const username = target.username.value; // dom
     const password = target.password.value; // dom
-    const snackbar = document.querySelector('#restricted-messages'); // dom
-
-    if(!username || !password){
-      snackbar.classList.add('error');
-      snackbar.MaterialSnackbar.showSnackbar({
-        message: "Username and Password needed"
-      });
-      Session.set('loading', false);
+    if(username === '' || password === ''){
+      Restricted.snackbar('error', 'Username and Password needed');
+      Session.set('restrictedAppLoading', false);
     } else {
       Meteor.loginWithPassword(username, password, function(error){
         if(error){
-          snackbar.classList.add('error');
-          snackbar.MaterialSnackbar.showSnackbar({
-            message: error.reason
-          });
+          Restricted.snackbar('error', error.reason);
         }
-        Session.set('loading', false);
+        Session.set('restrictedAppLoading', false);
       });
     }
   }

@@ -4,20 +4,15 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Settings } from '../_settings.js';
 
-// never change from client
-Settings.deny({
-  insert() { return true; },
-  update() { return true; },
-  remove() { return true; },
-});
-
 // client methods
 Meteor.methods({
 
-  '_settings.client_groups'() {
-    // must be logged in to get groups
-    if(!this.userId) {
-      throw new Meteor.Error('Unauthorized to get Setting Groups');
+  // only allow admin to read settings from client
+  '_settings.details'() {
+    // must be admin
+    if(!Meteor.call('_users.is_admin')){
+      console.log('unauthorized-read-setting-groups', 'Unauthorized to read Settings on client');
+      return [];
     }
     // return group settings with no values
     const app_settings = JSON.parse(Assets.getText('app_settings.json'));
@@ -29,11 +24,12 @@ Meteor.methods({
     });
   },
 
+  // only allow admin to update items from client
   '_settings.client_update'(items) {
     check(items, Array);
-    // must be logged in to edit a setting
-    if(!this.userId) {
-      throw new Meteor.Error('Unauthorized to update settings');
+    // must be admin
+    if(!Meteor.call('_users.is_admin')){
+      throw new Meteor.Error('unauthorized-update-settings', 'Unauthorized to update settings');
     }
     // clean items and update multiple settings
     const cleanItems = items.map(item => {
@@ -45,11 +41,11 @@ Meteor.methods({
       }
     });
     cleanItems.forEach(item => {
-      console.log(Settings.update({
+      Settings.update({
         'key': item.key
       },{
         $set: { 'value': item.value }
-      }));
+      });
     });
     return true;
   }
