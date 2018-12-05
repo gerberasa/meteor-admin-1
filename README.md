@@ -41,7 +41,7 @@
 ##### Security and folder structure:
 [meteor.com/structure](https://guide.meteor.com/structure.html)
 
-* All files in `/imports/` will not be loaded by default
+* All files in `/imports/` will not be loaded automatically by Meteor (import files as/when you need them)
 * All files in any `client/` folder will be available in the browser
 * All files in any `server/` folder will only be used on the server
 * All files in `/public/` are available as-is, and served up without "public", for example ""
