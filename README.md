@@ -57,7 +57,7 @@ The value of `input` can be one of the following:
 * `textarea` - a textarea field
 * more soon!
 
-Remember that only field values submitted via the client method in `api/COLLECTION/server/methods.js` will be submitted
+Remember that only field values submitted via the client method in `/imports/api/COLLECTION/server/methods.js` will be submitted
 
 -------------------
 
