@@ -32,6 +32,7 @@
 
 #### 🔹 Development Tools
 * Press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
+* To reset all collections and MongoDB data and deploy as if it's the first time, run `meteor reset` (WARNING - you're resetting all data!)
 
 -------------------
 
