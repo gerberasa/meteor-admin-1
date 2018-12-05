@@ -6,9 +6,9 @@
 #### 🔹 Install
 * [install the latest version of Meteor](https://www.meteor.com/install) (tested on 1.7)
 * create new app `meteor create APPNAME --full`
-* copy across files and folders from this repo
+* copy across all files and folders from this repo
 * install dependencies `meteor npm install`
-* change default app constants in `/lib/constants.js` (client data that will not change)
+* change default app constants in `/lib/constants.js` (client data that will never change)
 * cd into the app root and run `meteor` to deploy local dev environment at [localhost:3000](http://localhost:3000/)
 * to build for production and more, visit [meteor.com/commandline](https://docs.meteor.com/commandline.html)
 
@@ -17,7 +17,7 @@
 * change credentials here for admin login at [localhost:3000/restricted](http://localhost:3000/restricted)
 
 #### 🔹 SCSS, JS Libs and Google Fonts
-* stylesheets must be compiled outside of meteor and placed in `/public/scss` and compiled to `public/css`
+* stylesheets must be compiled outside of meteor and placed in `/public/scss` (compiled to `public/css`)
 * stylesheets, JS libraries and Google Fonts are conditionally loaded via `/imports/startup/client/meta.js`
 
 #### 🔹 Pages and Routes
@@ -26,12 +26,14 @@
 
 #### 🔹 API & Collections
 * collections have their own folder and files in `/imports/api/`
-* an example of the format each collections has `/private/app_data.json`
-* default data can also be added here and will be entered through functions at `/imports/startup/server/fixtures.js`
-* to edit data within the admin, import, subscribe and include it into the restricted templates at `/imports/ui/restricted/`
+* format collection data in `/private/app_collections.json`
+* default app data can be added here and will be entered through functions at `/imports/startup/server/fixtures.js`
+* to edit data within the admin, import/subscribe/include it within `/imports/ui/restricted/collections.js`
+* tabs and pages will be generated automatically
+* more info about field inputs below...
 
 #### 🔹 Development Tools
-* Press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
+* press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
 * To reset all collections and MongoDB data and deploy as if it's the first time, run `meteor reset` (WARNING - you're resetting all data!)
 
 -------------------
@@ -47,10 +49,20 @@
 * All files in `/public/` are available as-is, and served up in the root without "/public/" in the URL
 * All files in `/private/` are only accessible from server code and can be loaded via the [Assets API](http://docs.meteor.com/#/full/assets_getText)
 
-##### Admin data field types:
+##### Collection/Admin input fields:
 
-All data set via `/private/app_settings.json` and `/private/app_data.json` have various ways of being edited (or not)
-The value of `input` can be one of the following:
+All data set via `/private/app_settings.json` and `/private/app_collections.json` have various ways of being edited (or not)
+The value of `input` has the available options:
+```
+{
+"input": {
+    "type": "text", // can be "text" or "textarea" ...more coming soon! 
+    "disabled": true, // disables the input
+    "notRequired": true, // all inputs are usually required, unless this is set
+    "onlydisplay": true, // will not be shown when creating a new item (then becomes disabled)
+  }
+}
+```
 
 * `none` - the value will not be shown in the admin
 * `text` - a text field
