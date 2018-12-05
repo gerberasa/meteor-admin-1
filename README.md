@@ -1,5 +1,6 @@
 # 💎 hiven meteor boilerplate
 *Featuring [Meteor](https://www.meteor.com/), [MongoDB](https://www.mongodb.com/) & [Material](https://getmdl.io/) Admin*
+
 *also starring [Blaze](http://blazejs.org) and [Underscore](https://underscorejs.org/)*
 
 #### 🔹 Install
