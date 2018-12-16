@@ -72,7 +72,7 @@ The value of `input` has the available options:
 * `text` - a text field
 * `text-disabled` - a text field that will be submitted, but is disabled
 * `textarea` - a textarea field
-* more soon!
+* ...more coming soon!
 
 Remember that only field values submitted via the client method in `/imports/api/COLLECTION/server/methods.js` will be submitted
 
@@ -148,8 +148,10 @@ Grab them from [favicon.io/emoji-favicons/](https://favicon.io/emoji-favicons/)
 
 ### 🌎 Hosting
 
+##### Galaxy
 For the easiest way to host your Meteor app (costs min $30/mo), use Meteor's own [Galaxy](https://www.meteor.com/galaxy/signup). However, this will still require third-party hosting for MongoDB.
 
+##### Now
 For the cheapest way to host your Meteor app (FREE while prototyping, min $0.99/mo production), use [Now](https://zeit.co/now) v1:
 
 1. Install the amazing https://github.com/jkrup/meteor-now (these guys are awesome!)
@@ -158,4 +160,8 @@ For the cheapest way to host your Meteor app (FREE while prototyping, min $0.99/
 4. Deploy your app using something like `meteor-now -e MONGO_URL=mongodb://XXXX:XXXX@XXXXX:XXXXX -e ROOT_URL=https://my.app.com`
 5. Once successfully deployed, check the status and [create an alias](https://zeit.co/dashboard/deployments) (your custom domain)
 
+##### mLab
 Either way you host, you'll need to have your MongoDB seperate. I reccomend using MongoDB's own [mLab](https://mlab.com/). They have a great free tier for prototyping. [For production you will need to upgrade](https://docs.mlab.com/production-guide/).
+
+##### Uploaded File Assets/CDN
+...coming soon!
