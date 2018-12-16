@@ -79,6 +79,14 @@ Template.data_item.events({
         Restricted.snackbar('error', error.reason);
       } else {
         Restricted.snackbar('success', 'Updated successfully');
+        // reset insert fields
+        if(form.actions.insert){
+          form.data.forEach(setting => {
+            if(!setting.input.onlydisplay){
+              target[setting.key].value = '';
+            }
+          });
+        }
       }
       Session.set('restrictedFormLoading', false);
     });

@@ -28,9 +28,11 @@ Answers_upsert = function(item){
   }
 
   // if command is permitted to certain users
-  const permittedArray = choice.permitted.split(',');
-  if(permittedArray.length > 0 && !_.contains(permittedArray, item.username)){
-    throw new Meteor.Error('command-not-permitted', 'Command "'+item.command+'" cannot be used by "'+item.username+'"');
+  if(choice.permitted && choice.permitted.length > 0){
+    const permittedArray = choice.permitted.split(',');
+    if(permittedArray.length > 0 && !_.contains(permittedArray, item.username)){
+      throw new Meteor.Error('command-not-permitted', 'Command "'+item.command+'" cannot be used by "'+item.username+'"');
+    }
   }
 
   // allow users to update previous commands

@@ -3,6 +3,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Choices } from '../choices.js';
+import { Answers } from '../../answers/answers.js';
 
 // never change from client
 Choices.deny({
@@ -24,6 +25,22 @@ Choices_upsert = function(item){
     'command': item.command,
     'question': item.question,
     'permitted': item.permitted
+  });
+}
+Choices_remove = function(_id){
+  // also delete all Answers related to this choice
+  const choice = Choices.findOne({
+    '_id': _id
+  });
+  if(!choice){
+    throw new Meteor.Error('choice-missing', 'Choice missing while trying to remove');
+  }
+  Answers.remove({
+    'command': choice.command
+  });
+
+  return Choices.remove({
+    '_id': _id
   });
 }
 
@@ -64,9 +81,7 @@ Meteor.methods({
       throw new Meteor.Error('unauthorized-remove-choice', 'Unauthorized to remove choice');
     }
     // remove
-    Choices.remove({
-      '_id': _id
-    });
+    Choices_remove(_id);
     return true;
   },
 });
