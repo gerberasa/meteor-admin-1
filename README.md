@@ -36,6 +36,10 @@
 * press `CTRL + M` to enable [Meteor Toys](http://meteor.toys/)
 * To reset all collections and MongoDB data and deploy as if it's the first time, run `meteor reset` (WARNING - you're resetting all data!)
 
+#### 🔹 Example Data
+* Everything within the `_settings` array in `/private/app_settings.json` is example data and can be removed
+* There are two example collections; **Choices** and **Answers**. These are located at `/imports/api/choices/` and `/imports/api/answers/` and can be removed.
+
 -------------------
 
 ### ✏️ Notes
@@ -139,3 +143,19 @@ Use CSS icons with
 ### 🤓 Emoji Favicons
 
 Grab them from [favicon.io/emoji-favicons/](https://favicon.io/emoji-favicons/)
+
+-------------------
+
+### 🌎 Hosting
+
+For the easiest way to host your Meteor app (costs min $30/mo), use Meteor's own [Galaxy](https://www.meteor.com/galaxy/signup). However, this will still require third-party hosting for MongoDB.
+
+For the cheapest way to host your Meteor app (FREE while prototyping, min $0.99/mo production), use [Now](https://zeit.co/now) v1:
+
+1. Install the amazing https://github.com/jkrup/meteor-now (these guys are awesome!)
+2. Register an account with [Now](https://zeit.co/now) and change your account settings to use **Platform Version** `v1`
+3. Assign your [custom domain if needed](https://zeit.co/docs/v1/getting-started/assign-a-domain-name/#4.-using-a-custom-domain-with-a-cname)
+4. Deploy your app using something like `meteor-now -e MONGO_URL=mongodb://XXXX:XXXX@XXXXX:XXXXX -e ROOT_URL=https://my.app.com`
+5. Once successfully deployed, check the status and [create an alias](https://zeit.co/dashboard/deployments) (your custom domain)
+
+Either way you host, you'll need to have your MongoDB seperate. I reccomend using MongoDB's own [mLab](https://mlab.com/). They have a great free tier for prototyping. [For production you will need to upgrade](https://docs.mlab.com/production-guide/).
