@@ -3,6 +3,8 @@
 
 *...also starring [Blaze](http://blazejs.org) and [Underscore](https://underscorejs.org/)*
 
+![screenshot](https://user-images.githubusercontent.com/13186243/50644982-5647b200-0f6a-11e9-8fec-0a37c70ab5c9.jpg)
+
 #### 🔹 Install
 * [install the latest version of Meteor](https://www.meteor.com/install) (tested on 1.7)
 * create new app `meteor create APPNAME --full`
